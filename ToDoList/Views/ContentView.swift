@@ -62,7 +62,7 @@ struct ContentView: View {
                         }
                     }
                 }.sheet(isPresented: $isShowingAddNewTaskView){
-                    //AddTaskView()
+                    AddTaskView()
                 }
             }
             Button(action: {
