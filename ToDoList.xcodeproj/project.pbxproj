@@ -13,6 +13,8 @@
 		E55CB1542BC808950036B210 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E55CB1532BC808950036B210 /* Preview Assets.xcassets */; };
 		E55CB15D2BC87EE70036B210 /* TaskModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E55CB15B2BC87EE70036B210 /* TaskModel.xcdatamodeld */; };
 		E55CB15F2BC880000036B210 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55CB15E2BC880000036B210 /* DataController.swift */; };
+		E55CB1672BC892BD0036B210 /* TaskFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55CB1662BC892BD0036B210 /* TaskFilter.swift */; };
+		E55CB16A2BC899D80036B210 /* DateFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55CB1692BC899D80036B210 /* DateFormatting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		E55CB1532BC808950036B210 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E55CB15C2BC87EE70036B210 /* TaskModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskModel.xcdatamodel; sourceTree = "<group>"; };
 		E55CB15E2BC880000036B210 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		E55CB1662BC892BD0036B210 /* TaskFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFilter.swift; sourceTree = "<group>"; };
+		E55CB1692BC899D80036B210 /* DateFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatting.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +60,8 @@
 			isa = PBXGroup;
 			children = (
 				E55CB14C2BC808940036B210 /* ToDoListApp.swift */,
-				E55CB14E2BC808940036B210 /* ContentView.swift */,
+				E55CB1682BC899BE0036B210 /* Helpers */,
+				E55CB1602BC88A5A0036B210 /* Views */,
 				E55CB15A2BC87E410036B210 /* DataModel */,
 				E55CB1502BC808950036B210 /* Assets.xcassets */,
 				E55CB1522BC808950036B210 /* Preview Content */,
@@ -77,8 +82,25 @@
 			children = (
 				E55CB15B2BC87EE70036B210 /* TaskModel.xcdatamodeld */,
 				E55CB15E2BC880000036B210 /* DataController.swift */,
+				E55CB1662BC892BD0036B210 /* TaskFilter.swift */,
 			);
 			path = DataModel;
+			sourceTree = "<group>";
+		};
+		E55CB1602BC88A5A0036B210 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E55CB14E2BC808940036B210 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E55CB1682BC899BE0036B210 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				E55CB1692BC899D80036B210 /* DateFormatting.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,7 +175,9 @@
 			files = (
 				E55CB14F2BC808940036B210 /* ContentView.swift in Sources */,
 				E55CB15F2BC880000036B210 /* DataController.swift in Sources */,
+				E55CB1672BC892BD0036B210 /* TaskFilter.swift in Sources */,
 				E55CB14D2BC808940036B210 /* ToDoListApp.swift in Sources */,
+				E55CB16A2BC899D80036B210 /* DateFormatting.swift in Sources */,
 				E55CB15D2BC87EE70036B210 /* TaskModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
