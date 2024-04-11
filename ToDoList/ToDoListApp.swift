@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct ToDoListApp: App {
     //Injecting the database
-    @State private var dataController = DataController()
+    @StateObject private var dataController = DataController()
     
     var body: some Scene {
         WindowGroup {
