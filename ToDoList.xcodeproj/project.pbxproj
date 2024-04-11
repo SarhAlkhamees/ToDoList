@@ -15,6 +15,7 @@
 		E55CB15F2BC880000036B210 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55CB15E2BC880000036B210 /* DataController.swift */; };
 		E55CB1672BC892BD0036B210 /* TaskFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55CB1662BC892BD0036B210 /* TaskFilter.swift */; };
 		E55CB16A2BC899D80036B210 /* DateFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55CB1692BC899D80036B210 /* DateFormatting.swift */; };
+		E55CB16C2BC8AAD30036B210 /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55CB16B2BC8AAD30036B210 /* AddTaskView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		E55CB15E2BC880000036B210 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		E55CB1662BC892BD0036B210 /* TaskFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFilter.swift; sourceTree = "<group>"; };
 		E55CB1692BC899D80036B210 /* DateFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatting.swift; sourceTree = "<group>"; };
+		E55CB16B2BC8AAD30036B210 /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				E55CB14E2BC808940036B210 /* ContentView.swift */,
+				E55CB16B2BC8AAD30036B210 /* AddTaskView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E55CB14F2BC808940036B210 /* ContentView.swift in Sources */,
+				E55CB16C2BC8AAD30036B210 /* AddTaskView.swift in Sources */,
 				E55CB15F2BC880000036B210 /* DataController.swift in Sources */,
 				E55CB1672BC892BD0036B210 /* TaskFilter.swift in Sources */,
 				E55CB14D2BC808940036B210 /* ToDoListApp.swift in Sources */,
