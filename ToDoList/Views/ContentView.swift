@@ -33,7 +33,7 @@ struct ContentView: View {
                 VStack(alignment: .leading, spacing: 6){
                     List{
                         ForEach(filteredTasks){ task in
-                            NavigationLink(destination: Text("\(String(describing: task.dueDate))")){
+                            NavigationLink(destination: EditTaskView(task: task)){
                                 TaskItemCellView(task: task, selectedFilter: selectedFilter)
                             }
                         }
