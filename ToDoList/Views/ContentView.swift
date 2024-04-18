@@ -33,6 +33,7 @@ struct ContentView: View {
             NavigationStack{
                 if filteredTasks.isEmpty{
                     Text("You don't have any tasks to do")
+                        .foregroundColor(.gray)
                 }
                 VStack(alignment: .leading, spacing: 6){
                     if filteredTasks.isEmpty{
