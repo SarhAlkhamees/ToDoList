@@ -13,6 +13,7 @@ struct ContentView: View {
     @FetchRequest(sortDescriptors: [SortDescriptor(\.date, order: .reverse)]) var task: FetchedResults<Task>
     
     @State private var isShowingAddNewTaskView: Bool = false
+    @State private var isShowingDeleteAllConfirmationDialog: Bool = false
     @State private var selectedFilter: TaskFilter = .Done
     
     private var filteredTasks: [Task] {
@@ -43,6 +44,24 @@ struct ContentView: View {
                 }
                 .navigationTitle("To Do List")
                 .toolbar{
+                    
+                    //ToolbarItem for deleteing all the tasks
+                    ToolbarItem(placement: .navigationBarLeading){
+                        Button{
+                            isShowingDeleteAllConfirmationDialog.toggle()
+                        } label: {
+                            Image(systemName: "trash")
+                                .foregroundColor(.red)
+                        }.confirmationDialog("Delete Confirmation", isPresented: $isShowingDeleteAllConfirmationDialog, titleVisibility: .visible){
+                            Button(role: .destructive){
+                                deleteAllTasks()
+                            } label: {
+                                Text("Delete All")
+                            }
+                        } message: {
+                            Text("Are you sure you want to remove all of the tasks?")
+                        }
+                    }
                     
                     //ToolbarItem for Edit
                     ToolbarItem(placement: .navigationBarTrailing){
@@ -82,6 +101,15 @@ struct ContentView: View {
     private func deleteTask(offsets: IndexSet){
         withAnimation{
             offsets.map{filteredTasks[$0]}.forEach(managedObjContext.delete)
+            DataController().save(context: managedObjContext)
+        }
+    }
+    
+    private func deleteAllTasks(){
+        withAnimation{
+            filteredTasks.forEach { task in
+                managedObjContext.delete(task)
+            }
             DataController().save(context: managedObjContext)
         }
     }
