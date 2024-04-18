@@ -89,6 +89,7 @@ struct ContentView: View {
     
 #Preview {
     ContentView()
+        .environment(\.managedObjectContext, DataController().container.viewContext)
 }
     
 struct TaskItemCellView: View {
