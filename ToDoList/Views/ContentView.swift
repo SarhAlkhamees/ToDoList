@@ -31,69 +31,85 @@ struct ContentView: View {
     var body: some View {
         ZStack(alignment: .bottomTrailing){
             NavigationStack{
+                if filteredTasks.isEmpty{
+                    Text("You don't have any tasks to do")
+                }
                 VStack(alignment: .leading, spacing: 6){
-                    List{
-                        ForEach(filteredTasks){ task in
-                            NavigationLink(destination: EditTaskView(task: task)){
-                                TaskItemCellView(task: task, selectedFilter: selectedFilter)
+                    if filteredTasks.isEmpty{
+                        Button(action: {
+                            isShowingAddNewTaskView.toggle()
+                        }, label: {
+                            Image(systemName: "plus.circle.fill").resizable()
+                                .frame(width: 70, height: 70)
+                                .foregroundColor(.gray)
+                        })
+                    } else {
+                        List{
+                            ForEach(filteredTasks){ task in
+                                NavigationLink(destination: EditTaskView(task: task)){
+                                    TaskItemCellView(task: task, selectedFilter: selectedFilter)
+                                }
                             }
+                            .onDelete(perform: deleteTask)
                         }
-                        .onDelete(perform: deleteTask)
+                        .listStyle(.plain)
                     }
-                    .listStyle(.plain)
                 }
                 .navigationTitle("To Do List")
                 .toolbar{
-                    
-                    //ToolbarItem for deleteing all the tasks
-                    ToolbarItem(placement: .navigationBarLeading){
-                        Button{
-                            isShowingDeleteAllConfirmationDialog.toggle()
-                        } label: {
-                            Image(systemName: "trash")
-                                .foregroundColor(.red)
-                        }.confirmationDialog("Delete Confirmation", isPresented: $isShowingDeleteAllConfirmationDialog, titleVisibility: .visible){
-                            Button(role: .destructive){
-                                deleteAllTasks()
+                    if !filteredTasks.isEmpty{
+                        //ToolbarItem for deleteing all the tasks
+                        ToolbarItem(placement: .navigationBarLeading){
+                            Button{
+                                isShowingDeleteAllConfirmationDialog.toggle()
                             } label: {
-                                Text("Delete All")
-                            }
-                        } message: {
-                            Text("Are you sure you want to remove all of the tasks?")
-                        }
-                    }
-                    
-                    //ToolbarItem for Edit
-                    ToolbarItem(placement: .navigationBarTrailing){
-                        EditButton()
-                    }
-                    
-                    //ToolbarItem for Filtering
-                    ToolbarItem(placement: .navigationBarTrailing){
-                        Menu {
-                            Picker("Select a filter", selection: $selectedFilter.animation()){
-                                ForEach(TaskFilter.allCases, id: \.self){ filter in
-                                    Label(filter.rawValue, systemImage: filter.iconSymbols)
+                                Image(systemName: "trash")
+                                    .foregroundColor(.red)
+                            }.confirmationDialog("Delete Confirmation", isPresented: $isShowingDeleteAllConfirmationDialog, titleVisibility: .visible){
+                                Button(role: .destructive){
+                                    deleteAllTasks()
+                                } label: {
+                                    Text("Delete All")
                                 }
+                            } message: {
+                                Text("Are you sure you want to remove all of the tasks?")
                             }
-                        } label: {
-                            Image(systemName: "list.bullet")
+                        }
+                        
+                        //ToolbarItem for Edit
+                        ToolbarItem(placement: .navigationBarTrailing){
+                            EditButton()
+                        }
+                        
+                        //ToolbarItem for Filtering
+                        ToolbarItem(placement: .navigationBarTrailing){
+                            Menu {
+                                Picker("Select a filter", selection: $selectedFilter.animation()){
+                                    ForEach(TaskFilter.allCases, id: \.self){ filter in
+                                        Label(filter.rawValue, systemImage: filter.iconSymbols)
+                                    }
+                                }
+                            } label: {
+                                Image(systemName: "list.bullet")
+                            }
                         }
                     }
                 }.sheet(isPresented: $isShowingAddNewTaskView){
                     AddTaskView()
                 }
             }
-            Button(action: {
-                isShowingAddNewTaskView.toggle()
-            }, label: {
-                Image(systemName: "plus.circle.fill")
-                    .resizable()
-                    .frame(width: 50, height: 50)
-                    .foregroundColor(.gray)
-            })
-            .padding(.trailing, 20)
-            .padding(.bottom, 20)
+            if !filteredTasks.isEmpty{
+                Button(action: {
+                    isShowingAddNewTaskView.toggle()
+                }, label: {
+                    Image(systemName: "plus.circle.fill")
+                        .resizable()
+                        .frame(width: 50, height: 50)
+                        .foregroundColor(.gray)
+                })
+                .padding(.trailing, 20)
+                .padding(.bottom, 20)
+            }
         }
         .navigationViewStyle(.stack)
     }
