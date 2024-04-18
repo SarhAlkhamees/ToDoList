@@ -47,7 +47,6 @@ class DataController: ObservableObject {
         task.title = title
         task.taskDescription = taskDescription
         task.dueDate = dueDate
-        task.isDone = false
         
         save(context: context)
     }
